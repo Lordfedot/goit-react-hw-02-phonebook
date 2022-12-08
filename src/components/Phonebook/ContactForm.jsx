@@ -12,10 +12,7 @@ class ContactForm extends Component{
     }
     submitForm = e => {
         e.preventDefault()
-        if (this.state.name === '' || this.state.phone === '' ) {
-            alert('Write Something')
-            return
-        }
+        
         this.props.onSubmit(this.state)
 
         this.reset()
@@ -26,7 +23,7 @@ class ContactForm extends Component{
     render(){
         const {name,phone} = this.state
         return (
-    <Form>
+    <Form onSubmit={this.submitForm}>
         <label>Name
             <Input
             onChange={this.handleChange}
@@ -51,7 +48,7 @@ class ContactForm extends Component{
             />
         </label>
         
-        <Button type='submit' onClick={this.submitForm}>Add contact</Button>
+        <Button type='submit'>Add contact</Button>
     </Form>
         )
     }
