@@ -1,5 +1,6 @@
 import React , {Component} from 'react';
 import { nanoid } from 'nanoid'
+import PropTypes from 'prop-types'
 import ContactsList from './Phonebook/ContactsList';
 import ContactForm from './Phonebook/ContactForm';
 import Filter from './Phonebook/Filter';
@@ -76,3 +77,29 @@ export class App extends Component {
     )
   }
 }
+
+ContactsList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    number: PropTypes.string,
+  })),
+  onDelete: PropTypes.func,
+};
+ContactForm.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    number: PropTypes.string,
+  })),
+  onSubmit: PropTypes.func,
+};
+Filter.propTypes = {
+  onChangeFilter: PropTypes.func,
+  filter: PropTypes.string,
+}
+
+
+
+
+
